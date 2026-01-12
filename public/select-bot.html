@@ -1,0 +1,143 @@
+<!doctype html>
+<html lang="en">
+
+
+<!-- Mirrored from www.Smart Ai Bot.com/html-demo/equity/signin.html by HTTrack Website Copier/3.x [XR&CO'2014], Sun, 07 Sep 2025 17:21:45 GMT -->
+<head>
+	<!-- meta tags -->
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta name="description" content="Premium HTML5 Template by Smart Ai Bot">
+	<meta name="keywords" content="blockit, uikit3, Smart Ai Bot, handlebars, scss, javascript">
+	<meta name="author" content="Smart Ai Bot">
+	<meta name="theme-color" content="#FCB42D">
+	<!-- preload assets -->
+	<link rel="preload" href="fonts/fa-brands-400.woff2" as="font" type="font/woff2" crossorigin>
+	<link rel="preload" href="fonts/fa-solid-900.woff2" as="font" type="font/woff2" crossorigin>
+	<link rel="preload" href="fonts/archivo-v18-latin-regular.woff2" as="font" type="font/woff2" crossorigin>
+	<link rel="preload" href="fonts/archivo-v18-latin-300.woff2" as="font" type="font/woff2" crossorigin>
+	<link rel="preload" href="fonts/archivo-v18-latin-700.woff2" as="font" type="font/woff2" crossorigin>
+	<link rel="preload" href="css/style.css" as="style">
+	<link rel="preload" href="js/vendors/uikit.min.js" as="script">
+	<link rel="preload" href="js/utilities.min.js" as="script">
+	<link rel="preload" href="js/config-theme.js" as="script">
+	<!-- stylesheet -->
+	<link rel="stylesheet" href="css/style.css">
+	<!-- uikit -->
+	<script src="js/vendors/uikit.min.js"></script>
+	<!-- favicon -->
+	<link rel="shortcut icon" href="img/favicon.ico" type="image/x-icon">
+	<!-- touch icon -->
+	<link rel="apple-touch-icon-precomposed" href="img/apple-touch-icon.png">
+	<title>Select Bot - Smart Trading Bot</title>
+</head>
+
+<body>
+	<!-- page loader begin -->
+	<div class="page-loader">
+		<div></div>
+		<div></div>
+		<div></div>
+	</div>
+	<!-- page loader end -->
+	<main>
+		<!-- section content begin -->
+		<div class="uk-section uk-section-secondary uk-light uk-padding-remove-vertical">
+			<div class="uk-container uk-container-expand">
+				<div class="uk-grid" data-uk-height-viewport="expand: true">
+					<div class="uk-width-3-5@m uk-background-cover uk-background-center-right uk-visible@m uk-box-shadow-xlarge" style="background-image: url(img/in-signin-image.jpg);">
+						
+					</div>
+					<div class="uk-width-expand@m uk-flex uk-flex-middle">
+						<div class="uk-grid uk-flex-center">
+							<div class="uk-width-3-5@m">
+								<div class="uk-text-center in-padding-horizontal@s">
+									<a class="uk-logo" href="/">
+										<img src="img/in-equity2-img.png" data-src="img/user/header-logo-Uw3Zp9.svg" alt="logo" width="146" height="40" data-uk-img>
+									</a>
+									<p class="uk-text-lead uk-margin-small-top uk-margin-medium-bottom">Select Bot to trade in your wallet</p>
+									<!-- login form begin -->
+									<form id="selectBotForm" class="uk-grid uk-form">
+										<div class="uk-margin-small uk-width-1-1 uk-inline">
+											<span class="uk-form-icon uk-form-icon-flip fas fa-user fa-sm"></span>
+											<input class="uk-input uk-border-rounded" id="username" name="name" value="" type="text" placeholder="Fullname">
+										</div>
+										<div class="uk-margin-small uk-width-1-1 uk-inline">
+											<span class="uk-form-icon uk-form-icon-flip fa-solid fa-envelope fa-sm">
+											<input class="uk-input uk-border-rounded" id="username" name="email" value="" type="text" placeholder="Email Address">
+										</div>
+										<div class="uk-margin-small uk-width-1-1 uk-inline">
+											<span class="uk-form-icon uk-form-icon-flip fa-brands fa-bots fa-sm"></span>
+                                            <label for="Select Bot">Choose a bot</label>
+                                            <select name="bot">
+                                                <option value="USDT bot">USDT Trader</option>
+                                                <option value="DAI bot">DAI Trader</option>
+                                                <option value="WETH bot">WETH Trader</option>
+                                                <option value="Wrapped SOL bot">Wrapped SOL Trader</option>
+                                                <option value="Chainlink bot">Chainlink Trader</option>
+                                                <option value="Uniswap bot">Uniswap Trader</option>
+                                                <option value="WBTC bot">WBTC Trader</option>
+                                                <option value="USDC bot">USDC Trader</option>
+                                            </select>
+											
+										</div>
+										<div class="uk-margin-small uk-width-1-1 uk-inline">
+											<span class="uk-form-icon uk-form-icon-flip fa-solid fa-wallet fa-sm">
+											<input class="uk-input uk-border-rounded" id="username" name="walletAddress" value="" type="text" placeholder="Wallet Address">
+										</div>
+										<div class="uk-margin-small uk-width-1-1 uk-inline">
+											<span class="uk-form-icon uk-form-icon-flip fas fa-lock fa-sm"></span>
+											<input class="uk-input uk-border-rounded" id="password" name="amount" value="" type="number" placeholder="Amount to trade">
+										</div>
+										<div class="uk-margin-small uk-width-1-1">
+											<button class="uk-button uk-width-1-1 uk-button-primary uk-border-rounded uk-float-left" type="submit" name="submit">Select Bot</button>
+										</div>
+									</form>
+                                    <div id="status" style="margin-top:1rem; color:aliceblue;"></div>
+                                    <script>
+                                        const form = document.getElementById('selectBotForm');
+                                        const status = document.getElementById('status');
+                                    
+                                        form.addEventListener('submit', async (e) => {
+                                          e.preventDefault();
+                                          status.textContent = 'Sending...';
+                                    
+                                          const data = Object.fromEntries(new FormData(form).entries());
+                                    
+                                          try {
+                                            const res = await fetch('/select-bot', {
+                                              method: 'POST',
+                                              headers: { 'Content-Type': 'application/json' },
+                                              body: JSON.stringify(data)
+                                            });
+                                    
+                                            const result = await res.json();
+                                            if (res.ok) {
+                                              status.textContent = 'Thanks — your choice was sent to admin.';
+                                              form.reset();
+                                            } else {
+                                              status.textContent = 'Error: ' + (result.error || res.statusText);
+                                            }
+                                          } catch (err) {
+                                            console.error(err);
+                                            status.textContent = 'Network error — could not contact server.';
+                                          }
+                                        });
+                                      </script>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<!-- section content end -->
+	</main>
+	<!-- javascript -->
+	<script src="js/utilities.min.js"></script>
+	<script src="js/config-theme.js"></script>
+</body>
+
+
+<!-- Mirrored from www.Smart Ai Bot.com/html-demo/equity/signin.html by HTTrack Website Copier/3.x [XR&CO'2014], Sun, 07 Sep 2025 17:21:46 GMT -->
+</html>
